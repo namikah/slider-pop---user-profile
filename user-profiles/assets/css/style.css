@@ -80,8 +80,8 @@ body {
 }
 
 .container #anket-forum .form-users .img-parent .img-profile {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 100%;
@@ -90,7 +90,7 @@ body {
 
 .container #anket-forum .form-users .img-parent .change-profil-image-style {
   color: rgba(0, 0, 0, 0.459);
-  font-size: 20px;
+  font-size: 18px;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -260,6 +260,9 @@ body {
   border-radius: 50%;
   z-index: 99999;
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .popup .inner .close i {

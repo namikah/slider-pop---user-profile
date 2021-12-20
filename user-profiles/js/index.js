@@ -55,8 +55,8 @@ searchBtn.addEventListener("click", (e) => {
             element.style.transition = ".5s";
             element.style.transform = "scale(0)";
             setTimeout(() => {
-                element.style.transform = "scale(1)";
                 element.style.display = "none";
+                element.style.transform = "scale(1)";
             }, 500);
         }
     });
@@ -66,8 +66,8 @@ searchBtn.addEventListener("click", (e) => {
             element.parentNode.style.transition = ".5s";
             element.parentNode.style.transform = "scale(0)";
             setTimeout(() => {
-                element.parentNode.style.transform = "scale(1)";
                 element.parentNode.style.display = "none";
+                element.parentNode.style.transform = "scale(1)";
             }, 500);
         }
     });
@@ -260,16 +260,10 @@ function openPopup(item) {
 }
 //reset all users after search
 function resetSearch() {
-    document.querySelectorAll(".name-info").forEach(element => {
-        element.parentElement.style.display = "flex";
+    document.querySelectorAll(".img-parent").forEach(element => {
+        element.style.transition = ".5s";
         setTimeout(() => {
-            element.parentElement.style.transition = ".5s";
-        }, 500);
-    });
-    document.querySelectorAll(".surname-info").forEach(element => {
-        element.parentElement.style.display = "flex";
-        setTimeout(() => {
-            element.parentElement.style.transition = ".5s";
+            element.style.display = "flex";
         }, 500);
     });
 }
