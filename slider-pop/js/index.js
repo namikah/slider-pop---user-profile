@@ -47,7 +47,7 @@ function createNewPictureBox(result) {
     imagesCards.appendChild(aTag);
     addClickEventForUploadedImages(aTag);
 }
-//add click event for new uploaded pictures
+//add click event for uploaded pictures
 function addClickEventForUploadedImages(item) {
     item.addEventListener("click", function (e) {
         e.preventDefault();
@@ -55,7 +55,7 @@ function addClickEventForUploadedImages(item) {
         startAutoSlide();
     })
 }
-//open popup function
+//open popup slider for biggest image
 function openPopup(item) {
     resetClassList();
     item.classList.add("show-image");
@@ -63,7 +63,7 @@ function openPopup(item) {
     bigImage.setAttribute("src", imgSrc);
     popup.style.display = "flex";
 }
-//close popup function
+//close popup
 function closePopup() {
     popup.style.display = "none";
     stopAutoSlide();
@@ -78,8 +78,9 @@ popup.addEventListener("click", (e) => {
         closePopup();
     }
 })
-//keys action for popup
+//add keys for popup
 document.addEventListener("keydown", (e) => {
+    if (popup.style.display !== "flex") return
     curElement = document.querySelector(".show-image");
     switch (e.code) {
         case "ArrowRight":
@@ -97,47 +98,39 @@ document.addEventListener("keydown", (e) => {
             break;
     }
 })
-//right-arrow click for change image
-rightArrow.addEventListener("click", (e) => {
-    curElement = document.querySelector(".show-image");
-    changeEffect(() => changeNext(curElement));
-    stopAutoSlide();
-})
 //left-arrow click for change image
 leftArrow.addEventListener("click", (e) => {
     curElement = document.querySelector(".show-image");
     changeEffect(() => changePrev(curElement));
     stopAutoSlide();
 })
-//change images next function
+//right-arrow click for change image
+rightArrow.addEventListener("click", (e) => {
+    curElement = document.querySelector(".show-image");
+    changeEffect(() => changeNext(curElement));
+    stopAutoSlide();
+})
+//change images next
 function changeNext(currentElement) {
-    if (popup.style.display !== "flex") return
     if (currentElement.nextElementSibling !== null) {
-        // currentElement.nextElementSibling.classList.add("show-image");
         nextImageSrc = currentElement.nextElementSibling;
-        openPopup(nextImageSrc);
     }
     else {
-        // currentElement.parentElement.children[0].classList.add("show-image");
         nextImageSrc = currentElement.parentElement.children[0];
-        openPopup(nextImageSrc);
     }
+    openPopup(nextImageSrc);
 }
-//change images prev function
+//change images prev
 function changePrev(currentElement) {
-    if (popup.style.display !== "flex") return
     let length = currentElement.parentElement.children.length;
 
     if (currentElement.previousElementSibling !== null) {
-        // currentElement.previousElementSibling.classList.add("show-image");
         nextImageSrc = currentElement.previousElementSibling;
-        openPopup(nextImageSrc);
     }
     else {
-        // currentElement.parentElement.children[length - 1].classList.add("show-image");
         nextImageSrc = currentElement.parentElement.children[length - 1];
-        openPopup(nextImageSrc);
     }
+    openPopup(nextImageSrc);
 }
 //for enter gallery page
 loginBtn.addEventListener("click", (e) => {
