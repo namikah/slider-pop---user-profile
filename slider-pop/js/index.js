@@ -1,8 +1,9 @@
 let imageGallery = document.querySelector("#image-gallery");
+let currentImages = document.querySelectorAll(".img-a-source");
 let imagesCards = document.querySelector(".images-cards");
 let popup = document.querySelector(".popup");
 let bigImage = document.querySelector(".popup .inner .slider-image img");
-let close = document.querySelector(".popup .inner .close");
+let closePopupImages = document.querySelector(".popup .inner .close");
 let rightArrow = document.querySelector(".arrows .right-arrow i");
 let leftArrow = document.querySelector(".arrows .left-arrow i")
 let formLogin = document.querySelector("#form-sign-in");
@@ -12,7 +13,12 @@ let uploadIcon = document.querySelector(".upload-icon");
 let uploadBtn = document.querySelector(".upload-btn");
 let autoSlideInterval;
 
-//upload image choose
+//add click event for all images
+currentImages.forEach(item => {
+    addClickEventForUploadedImages(item);
+});
+
+//choose and upload image
 uploadIcon.addEventListener("click", () => {
     uploadBtn.click();
 })
@@ -29,6 +35,110 @@ uploadBtn.addEventListener("change", function (e) {
         fileReader.readAsDataURL(file);
     }
 })
+//create new picture box
+function createNewPictureBox(result) {
+    let aTag = document.createElement("a");
+    let img = document.createElement("img");
+    aTag.classList.add("img-a-source");
+    aTag.setAttribute("alt", "image");
+    aTag.setAttribute("href", result);
+    img.setAttribute("src", result);
+    aTag.appendChild(img);
+    imagesCards.appendChild(aTag);
+    addClickEventForUploadedImages(aTag);
+}
+//add click event for new uploaded pictures
+function addClickEventForUploadedImages(item) {
+    item.addEventListener("click", function (e) {
+        e.preventDefault();
+        openPopup(this);
+        startAutoSlide();
+    })
+}
+//open popup function
+function openPopup(item) {
+    resetClassList();
+    item.classList.add("show-image");
+    let imgSrc = item.getAttribute("href");
+    bigImage.setAttribute("src", imgSrc);
+    popup.style.display = "flex";
+}
+//close popup function
+function closePopup() {
+    popup.style.display = "none";
+    stopAutoSlide();
+}
+//close popup with X
+closePopupImages.addEventListener("click", () => {
+    closePopup();
+})
+//Close popup with side click
+popup.addEventListener("click", (e) => {
+    if (e.target.classList.contains("popup")) {
+        closePopup();
+    }
+})
+//keys action for popup
+document.addEventListener("keydown", (e) => {
+    curElement = document.querySelector(".show-image");
+    switch (e.code) {
+        case "ArrowRight":
+            stopAutoSlide();
+            changeEffect(() => changeNext(curElement));
+            break;
+        case "ArrowLeft":
+            stopAutoSlide();
+            changeEffect(() => changePrev(curElement));
+            break;
+        case "Escape":
+            closePopup();
+            break;
+        default:
+            break;
+    }
+})
+//right-arrow click for change image
+rightArrow.addEventListener("click", (e) => {
+    curElement = document.querySelector(".show-image");
+    changeEffect(() => changeNext(curElement));
+    stopAutoSlide();
+})
+//left-arrow click for change image
+leftArrow.addEventListener("click", (e) => {
+    curElement = document.querySelector(".show-image");
+    changeEffect(() => changePrev(curElement));
+    stopAutoSlide();
+})
+//change images next function
+function changeNext(currentElement) {
+    if (popup.style.display !== "flex") return
+    if (currentElement.nextElementSibling !== null) {
+        // currentElement.nextElementSibling.classList.add("show-image");
+        nextImageSrc = currentElement.nextElementSibling;
+        openPopup(nextImageSrc);
+    }
+    else {
+        // currentElement.parentElement.children[0].classList.add("show-image");
+        nextImageSrc = currentElement.parentElement.children[0];
+        openPopup(nextImageSrc);
+    }
+}
+//change images prev function
+function changePrev(currentElement) {
+    if (popup.style.display !== "flex") return
+    let length = currentElement.parentElement.children.length;
+
+    if (currentElement.previousElementSibling !== null) {
+        // currentElement.previousElementSibling.classList.add("show-image");
+        nextImageSrc = currentElement.previousElementSibling;
+        openPopup(nextImageSrc);
+    }
+    else {
+        // currentElement.parentElement.children[length - 1].classList.add("show-image");
+        nextImageSrc = currentElement.parentElement.children[length - 1];
+        openPopup(nextImageSrc);
+    }
+}
 //for enter gallery page
 loginBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -70,111 +180,6 @@ loginBtn.addEventListener("click", (e) => {
         return;
     }
 })
-//create new picture box
-function createNewPictureBox(result) {
-    let aTag = document.createElement("a");
-    let img = document.createElement("img");
-    aTag.classList.add("img-a-source");
-    aTag.setAttribute("alt", "image");
-    aTag.setAttribute("href", result);
-    img.setAttribute("src", result);
-    aTag.appendChild(img);
-    imagesCards.appendChild(aTag);
-}
-//add click event for all images
-document.querySelectorAll(".img-a-source").forEach(aTag => {
-    resetClassList();
-    aTag.addEventListener("click", function (e) {
-        e.preventDefault();
-        this.classList.add("show-image");
-        openPopup(this);
-        startAutoSlide();
-    })
-});
-//right-arrow click for change image
-rightArrow.addEventListener("click", (e) => {
-    curElement = document.querySelector(".show-image");
-    changeEffect(() => changeNext(curElement));
-    stopAutoSlide();
-})
-
-//left-arrow click for change image
-leftArrow.addEventListener("click", (e) => {
-    curElement = document.querySelector(".show-image");
-    changeEffect(() => changePrev(curElement));
-    stopAutoSlide();
-})
-
-//keys action for popup
-document.addEventListener("keydown", (e) => {
-    curElement = document.querySelector(".show-image");
-    switch (e.code) {
-        case "ArrowRight":
-            stopAutoSlide();
-            changeEffect(() => changeNext(curElement));
-            break;
-        case "ArrowLeft":
-            stopAutoSlide();
-            changeEffect(() => changePrev(curElement));
-            break;
-        case "Escape":
-            closePopup();
-            break;
-        default:
-            break;
-    }
-})
-//close popup with X
-close.addEventListener("click", () => {
-    closePopup();
-})
-//Close popup with side click
-popup.addEventListener("click", (e) => {
-    if (e.target.classList.contains("popup")) {
-        closePopup();
-    }
-})
-//close popup function
-function closePopup() {
-    popup.style.display = "none";
-    stopAutoSlide();
-}
-//open popup function
-function openPopup(item) {
-    let imgSrc = item.getAttribute("href");
-    bigImage.setAttribute("src", imgSrc);
-    popup.style.display = "flex";
-}
-//change images next function
-function changeNext(currentElement) {
-    if (popup.style.display !== "flex") return
-    resetClassList();
-    if (currentElement.nextElementSibling !== null) {
-        currentElement.nextElementSibling.classList.add("show-image");
-        nextImageSrc = currentElement.nextElementSibling;
-        openPopup(nextImageSrc);
-    }
-    else {
-        currentElement.parentElement.children[0].classList.add("show-image");
-        openPopup(currentElement.parentElement.children[0]);
-    }
-}
-//change images prev function
-function changePrev(currentElement) {
-    if (popup.style.display !== "flex") return
-    resetClassList();
-    let length = currentElement.parentElement.children.length;
-
-    if (currentElement.previousElementSibling !== null) {
-        currentElement.previousElementSibling.classList.add("show-image");
-        nextImageSrc = currentElement.previousElementSibling;
-        openPopup(nextImageSrc);
-    }
-    else {
-        currentElement.parentElement.children[length - 1].classList.add("show-image");
-        openPopup(currentElement.parentElement.children[length - 1]);
-    }
-}
 //reset all active image class
 function resetClassList() {
     document.querySelectorAll(".show-image").forEach(item => {
