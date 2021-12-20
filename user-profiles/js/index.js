@@ -94,7 +94,7 @@ enterBtn.addEventListener("click", function (e) {
         inputSalary.style.borderColor === "red")
         return;
 
-    let imgParentTag = document.createElement("div");
+    let imgParentTag = document.createElement("table");
     let img = document.createElement("img");
     let nameInfo = document.createElement("span");
     let inputNameInfo = document.createElement("input");
