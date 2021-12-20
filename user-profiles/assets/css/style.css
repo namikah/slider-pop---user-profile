@@ -1,0 +1,331 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-color: #4d5bf3;
+}
+
+.container {
+  max-width: 1150px;
+  margin: 20px auto;
+}
+
+.container #anket-forum .form-users {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border-radius: 10px;
+  gap: 10px;
+}
+
+.container #anket-forum .form-users .enter-user-information {
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  background-color: #efbf54fa;
+  border-radius: 10px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transform: translateX(-150%);
+          transform: translateX(-150%);
+  opacity: 0;
+}
+
+.container #anket-forum .form-users .img-parent {
+  border: 1px solid #848609;
+  background-color: #cdff33d9;
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: relative;
+  -webkit-transition: .5s all;
+  transition: .5s all;
+}
+
+.container #anket-forum .form-users .img-parent .img-profile {
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.container #anket-forum .form-users .img-parent .change-profil-image-style {
+  color: rgba(0, 0, 0, 0.459);
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.container #anket-forum .form-users .img-parent .change-profil-image-style:hover {
+  color: #299b06;
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+
+.container #anket-forum .form-users .img-parent .remove-profile {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: transparent;
+  color: #f10707;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 24px;
+  font-weight: 500;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.container #anket-forum .form-users .img-parent .remove-profile:hover {
+  color: #250202;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.container #anket-forum .form-users #inputText {
+  width: 250px;
+}
+
+.container #anket-forum .form-users .enter-name {
+  padding-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+
+.container #anket-forum .form-users .enter-name div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.container #anket-forum .form-users .upload-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.container #anket-forum .form-users .upload-image div {
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container #anket-forum .form-users .upload-image div .upload-icon {
+  font-size: 24px;
+  color: #078807;
+  cursor: pointer;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.container #anket-forum .form-users .upload-image div .upload-icon span {
+  font-size: 16px;
+}
+
+.container #anket-forum .form-users .upload-image div .upload-icon:hover {
+  color: #11b611;
+}
+
+.container #anket-forum .form-users .upload-image div .upload-icon:hover span {
+  color: #11b611;
+}
+
+.container #anket-forum .form-users .upload-image div .upload-btn {
+  display: none;
+}
+
+.container #anket-forum .form-users .enter-btn {
+  width: 150px;
+}
+
+.container #anket-forum .form-users .search-enter-btn {
+  width: 150px;
+}
+
+.popup {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.473);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: none;
+}
+
+.popup .inner {
+  position: relative;
+  border: 10px solid white;
+  overflow: hidden;
+}
+
+.popup .inner .slider-image {
+  max-width: 800px;
+  max-height: 560px;
+  background-color: white;
+}
+
+.popup .inner .slider-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.popup .inner .close {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: black;
+  border-radius: 50%;
+  z-index: 99999;
+  cursor: pointer;
+}
+
+.popup .inner .close i {
+  color: white;
+  font-size: 20px;
+}
+
+.search-filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  background-color: #efbf54fa;
+  border-radius: 10px;
+  width: 100%;
+  padding: 20px;
+  -webkit-transform: translateX(150%);
+          transform: translateX(150%);
+  opacity: 0;
+}
+
+.search-filter .top-part-search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .img-parent {
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
