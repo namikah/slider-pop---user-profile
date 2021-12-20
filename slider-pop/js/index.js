@@ -11,10 +11,13 @@ let loginBtn = document.querySelector(".login-btn");
 let username = document.querySelector(".user-name");
 let uploadIcon = document.querySelector(".upload-icon");
 let uploadBtn = document.querySelector(".upload-btn");
+let picInfo;
 let autoSlideInterval;
 
 //add click event for all images
 currentImages.forEach(item => {
+    picInfo = item.getAttribute("href");
+    item.setAttribute("data-value","filename: " + picInfo);
     addClickEventForUploadedImages(item);
 });
 
@@ -30,6 +33,7 @@ uploadBtn.addEventListener("change", function (e) {
         let fileReader = new FileReader();
         fileReader.onloadend = function (e) {
             const { result } = e.target;
+            picInfo = file.name;
             createNewPictureBox(result);
         };
         fileReader.readAsDataURL(file);
@@ -40,7 +44,8 @@ function createNewPictureBox(result) {
     let aTag = document.createElement("a");
     let img = document.createElement("img");
     aTag.classList.add("img-a-source");
-    aTag.setAttribute("alt", "image");
+    aTag.setAttribute("alt", picInfo);
+    aTag.setAttribute("data-value","filename: " + picInfo);
     aTag.setAttribute("href", result);
     img.setAttribute("src", result);
     aTag.appendChild(img);

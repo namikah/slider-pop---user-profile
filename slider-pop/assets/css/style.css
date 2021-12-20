@@ -37,23 +37,26 @@ body {
   transition: 1s;
 }
 
-.container #image-gallery .upload-icon {
+.container #image-gallery .upload-image {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.container #image-gallery .upload-image .upload-icon {
   font-size: 24px;
   color: #faea0f;
   cursor: pointer;
   padding: 20px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  right: 0;
-  top: 0;
-  position: absolute;
 }
 
-.container #image-gallery .upload-icon:hover {
+.container #image-gallery .upload-image .upload-icon:hover {
   color: #fa8c0f;
 }
 
-.container #image-gallery .upload-btn {
+.container #image-gallery .upload-image .upload-btn {
   display: none;
 }
 
@@ -80,6 +83,22 @@ body {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   border-radius: 10px;
+  position: relative;
+}
+
+.container #image-gallery .images-cards a::after {
+  content: attr(data-value);
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.493);
+  color: white;
+  font-size: 12px;
+  -webkit-transition: 1s;
+  transition: 1s;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 100%;
+  padding: 0 5px;
 }
 
 .container #image-gallery .images-cards a img {
@@ -100,10 +119,9 @@ body {
           box-shadow: 0px 0px 8px 8px white;
 }
 
-.container #image-gallery .uploda-image {
-  position: absolute;
-  right: 0;
-  top: 0;
+.container #image-gallery .images-cards a:hover::after {
+  top: 80%;
+  bottom: 0;
 }
 
 .popup {
