@@ -17,7 +17,7 @@ let autoSlideInterval;
 //add click event for all images
 currentImages.forEach(item => {
     picInfo = item.getAttribute("href");
-    item.setAttribute("data-value","filename: " + picInfo);
+    item.setAttribute("data-value", "filename: " + picInfo);
     addClickEventForUploadedImages(item);
 });
 
@@ -45,7 +45,7 @@ function createNewPictureBox(result) {
     let img = document.createElement("img");
     aTag.classList.add("img-a-source");
     aTag.setAttribute("alt", picInfo);
-    aTag.setAttribute("data-value","filename: " + picInfo);
+    aTag.setAttribute("data-value", "filename: " + picInfo);
     aTag.setAttribute("href", result);
     img.setAttribute("src", result);
     aTag.appendChild(img);
